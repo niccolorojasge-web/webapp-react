@@ -8,7 +8,7 @@ const MovieCard = () => {
                 <h5 className="card-title">Titolo del libro</h5>
                 <address><i>Autore</i></address>
                 <p className="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta ratione veritatis sunt molestias nihil odit totam, quis corporis laboriosam excepturi. Labore vero molestiae eveniet explicabo esse iure laborum nemo odio.</p>
-                <Link to={`books/1`} className="btn btn-primary">See more</Link>
+                <Link to={`movie/1`} className="btn btn-primary">See more</Link>
             </div>
         </div>
     )
