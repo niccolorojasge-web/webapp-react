@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
 import ReviewCard from "../components/ReviewCard"
+import axios from "axios"
+import { useEffect,useState } from "react"
+
 function MoviePage() {
 
   return (
