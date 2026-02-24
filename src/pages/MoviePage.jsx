@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios"
 import { useEffect,useState } from "react"
 const endpoint = "http://localhost:3000/api/movie/"
-
+//function moviepage 
 function MoviePage() {
 const {id}= useParams();
 //settiamo la var di stato  per il libro 
