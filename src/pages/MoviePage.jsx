@@ -3,12 +3,18 @@ import ReviewCard from "../components/ReviewCard"
 import { useParams } from "react-router-dom";
 import axios from "axios"
 import { useEffect,useState } from "react"
+//import review
+import AddReview from '../components/AddReview'
+
+
 const endpoint = "http://localhost:3000/api/movie/"
 //function moviepage 
 function MoviePage() {
 const {id}= useParams();
+
 //settiamo la var di stato  per il libro 
 const [movie, setMovie]= useState({})
+
 //funzione di render chiama rotta show
 const fetchMovie=()=>{
     axios.get(endpoint + id)
@@ -24,6 +30,8 @@ const renderReviews =()=>{
     return movie.results?.map(result=>{
         return <ReviewCard reviewProp={result} key={result.id}/>
     })
+
+
 }
   return (
     <>
@@ -40,6 +48,9 @@ const renderReviews =()=>{
                     <h4>Our community reviews</h4>
                 </header>
                   {renderReviews()}
+            </section>
+            <section>
+                <AddReview movie_id={movie.id} reloadReviews={fetchMovie}/>
             </section>
             <footer className="border-top border-1 pt-2 mb-3 d-flex justify-content-end">
                 <Link className="btn btn-secondary" to="/">Back to home</Link>
