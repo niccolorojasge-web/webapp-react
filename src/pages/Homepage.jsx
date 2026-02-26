@@ -5,15 +5,19 @@ import axios from "axios"
 //importo state e effect
 import {useState ,useEffect} from "react"
 const endpoint = "http://localhost:3000/api/movie"
+import { useGlobal } from "../contexts.jsx/LoadingMain"
 
 
 function Homepage() {
+  const { setIsLoading } = useGlobal();
 const [movies, setMovies]= useState ([]);
 //funzione che gestisce la chiamata axios 
 const fetchMovies = ()=>{
+   setIsLoading(true);
   axios.get(endpoint)
   .then (res=>{setMovies(res.data);})
   .catch (err=>{console.log(err)})
+  .finally(setIsLoading(false))
 }
 //funzione di rendering li stato dei libri
 const renderMovie=()=>{

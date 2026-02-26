@@ -5,11 +5,15 @@ import axios from "axios"
 import { useEffect,useState } from "react"
 //import review
 import AddReview from '../components/AddReview'
+import { useGlobal } from "../contexts.jsx/LoadingMain";
 
 
 const endpoint = "http://localhost:3000/api/movie/"
 //function moviepage 
 function MoviePage() {
+    
+const { setIsLoading } = useGlobal();
+
 const {id}= useParams();
 
 //settiamo la var di stato  per il libro 
@@ -17,11 +21,13 @@ const [movie, setMovie]= useState({})
 
 //funzione di render chiama rotta show
 const fetchMovie=()=>{
+    setIsLoading(true);
     axios.get(endpoint + id)
     .then (res=>{setMovie(res.data)})
     .catch (err=>{
         console.log(err)
     })
+    .finally(setIsLoading(false))
 }
 //richiamo funzione di rendering 
 useEffect(fetchMovie,[])

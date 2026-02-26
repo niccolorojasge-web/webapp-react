@@ -25,7 +25,7 @@ const intialForm = {
     }
      // funzione per gestione della chiamata al submit del form
     const handleSubmit = e => {
-        // inibiamo comportamento di base del form
+        // iniziamo comportamento di base del form
         e.preventDefault();
         // gestisci la chiamata in post all'endpoint in axios
         axios.post(endpoint, formData, { headers: { 'Content-Type': 'application/json' } })
